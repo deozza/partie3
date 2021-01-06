@@ -4,6 +4,7 @@ const fichierSource = process.argv[2]; // nom de fichier récupéré depuis argu
 const fichierDestination = 'résultat.txt';
 
 function lireFichier(nomFichier, callback) {
+
     fs.readFile(nomFichier, {encoding: "utf-8"}, function (err, content) {
         if (err) return callback(err)
         callback(null, content)
