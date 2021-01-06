@@ -12,19 +12,18 @@ async function lireFichier(nomFichier) {
 
 }
 
-lireFichier(fichierSource)
-    .then( function(result) {
-        let content = result.toLowerCase();
+(async function (){
+    try{
+        let content = await lireFichier(fichierSource);
+        content = content.toLowerCase();
         console.log(content)
-        try {
-            fs.promises.writeFile(fichierDestination, content, {encoding: "utf8"});
-        }
-        catch (err) {
-            console.error(err);
-        }
-    }).catch(function(error){
+        fs.promises.writeFile(fichierDestination, content, {encoding: "utf8"});
+    }catch(error){
         console.log(error)
-    });
+
+    }
+})()
+
 
 // TODO: appeler la fonction lireFichier() pour récupérer le contenu de `fichierSource`
 
